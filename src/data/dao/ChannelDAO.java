@@ -32,7 +32,7 @@ public class ChannelDAO {
         try (Connection connection = Database.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(0, id);
+            preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -42,7 +42,10 @@ public class ChannelDAO {
                 channel.setCreatedAt(resultSet.getDate("created_at"));
             }
 
-        } catch (SQLException ignored) { }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
 
         return channel;
     }
@@ -63,7 +66,10 @@ public class ChannelDAO {
                 users.add(channel);
             }
 
-        } catch (SQLException ignored) { }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
 
         return users;
     }
@@ -74,13 +80,16 @@ public class ChannelDAO {
         try (Connection connection = Database.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(0, channel.getTitle());
-            preparedStatement.setInt(1, channel.getPullingIncrement());
-            preparedStatement.setDate(2, new Date(channel.getCreatedAt().getTime()));
-            preparedStatement.setString(3, channel.getId());
+            preparedStatement.setString(1, channel.getTitle());
+            preparedStatement.setInt(2, channel.getPullingIncrement());
+            preparedStatement.setDate(3, new Date(channel.getCreatedAt().getTime()));
+            preparedStatement.setString(4, channel.getId());
             preparedStatement.executeUpdate();
 
-        } catch (SQLException ignored) { }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void delete(String id) {
@@ -89,9 +98,12 @@ public class ChannelDAO {
         try (Connection connection = Database.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(0, id);
+            preparedStatement.setString(1, id);
             preparedStatement.executeUpdate();
 
-        } catch (SQLException ignored) { }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

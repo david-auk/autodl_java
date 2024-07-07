@@ -1,17 +1,18 @@
 package data.models;
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 public class Content {
     private String id;
     private String title;
     private String description;
     private String channelId;
-    private LocalDateTime uploadDate;
-    private LocalDateTime downloadDate;
+    private Date uploadDate;
+    private Date downloadDate;
     private String videoPath;
     private String thumbnailPath;
     private String subtitlePath;
-    private long videoSize;
+    private int videoSize;
     private int duration;
     private int imageHeight;
     private int imageWidth;
@@ -19,7 +20,7 @@ public class Content {
     // Constructors
     public Content() {}
 
-    public Content(String id, String title, String description, String channelId, LocalDateTime uploadDate, LocalDateTime downloadDate, String videoPath, String thumbnailPath, String subtitlePath, long videoSize, int duration, int imageHeight, int imageWidth) {
+    public Content(String id, String title, String description, String channelId, Date uploadDate, Date downloadDate, String videoPath, String thumbnailPath, String subtitlePath, int videoSize, int duration, int imageHeight, int imageWidth) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -68,19 +69,19 @@ public class Content {
         this.channelId = channelId;
     }
 
-    public LocalDateTime getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(LocalDateTime uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
 
-    public LocalDateTime getDownloadDate() {
+    public Date getDownloadDate() {
         return downloadDate;
     }
 
-    public void setDownloadDate(LocalDateTime downloadDate) {
+    public void setDownloadDate(Date downloadDate) {
         this.downloadDate = downloadDate;
     }
 
@@ -108,11 +109,11 @@ public class Content {
         this.subtitlePath = subtitlePath;
     }
 
-    public long getVideoSize() {
+    public int getVideoSize() {
         return videoSize;
     }
 
-    public void setVideoSize(long videoSize) {
+    public void setVideoSize(int videoSize) {
         this.videoSize = videoSize;
     }
 

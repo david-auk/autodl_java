@@ -1,6 +1,8 @@
 package data.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Channel {
     private String id;
@@ -10,6 +12,15 @@ public class Channel {
 
     // Constructors
     public Channel() {}
+
+    // Functional methods
+    public List<Content> getLatestVideos() {
+        List<Content> contents = new ArrayList<Content>();
+
+
+
+        return contents;
+    }
 
     // Getters and Setters
     public String getId() {

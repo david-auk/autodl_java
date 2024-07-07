@@ -1,21 +1,21 @@
 import data.dao.ChannelDAO;
+import data.dao.ContentDAO;
 import data.models.Channel;
-
-import java.util.Date;
+import data.models.Content;
+import utils.Youtube;
 
 public class Main {
     public static void main(String[] args) {
 
-//        Channel channel = new Channel();
-//        channel.setId("UCB0JSO6d5ysH2Mmqz5I9rIw");
-//        channel.setTitle("AC/DC");
-//        channel.setPullingIncrement(4);
-//        channel.setCreatedAt(new Date());
-//
-//        ChannelDAO.add(channel);
-
-        for (Channel channel : ChannelDAO.getAll()){
-            System.out.println(channel.getTitle());
+        for (Channel channel : ChannelDAO.getAll()) { // : ChannelDAO.getRelevant(new Date()) {
+            for (Content content : Youtube.getLatestVideos(channel.getId())){
+                System.out.println(content.getTitle());
+                if (ContentDAO.get(content.getId()) == null){
+                    System.out.println("Not found");
+                }else {
+                    System.out.println("Found");
+                }
+            }
         }
     }
 }
