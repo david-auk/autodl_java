@@ -39,6 +39,7 @@ public class ChannelDAO {
                 channel = new Channel();
                 channel.setId(resultSet.getString("id"));
                 channel.setTitle(resultSet.getString("title"));
+                channel.setPullingIncrement(resultSet.getInt("pulling_increment"));
                 channel.setCreatedAt(resultSet.getDate("created_at"));
             }
 
@@ -62,6 +63,7 @@ public class ChannelDAO {
                 Channel channel = new Channel();
                 channel.setId(resultSet.getString("id"));
                 channel.setTitle(resultSet.getString("title"));
+                channel.setPullingIncrement(resultSet.getInt("pulling_increment"));
                 channel.setCreatedAt(resultSet.getDate("created_at"));
                 users.add(channel);
             }
